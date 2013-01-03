@@ -1,4 +1,11 @@
-SHELL := /bin/sh
+# "Every Makefile should contain this line..."
+SHELL := /bin/sh # - section 7.2.1 of the GNU Coding Standards
+
+# Clear the suffix list; no suffix rules in this makefile. See section 7.2.1 of
+# the GNU Coding Standards.
+.SUFFICES:
+ 
+################################################################################
 
 CXX := g++
 CXXFLAGS := -std=c++11 -Wall -Wextra -Wold-style-cast -pedantic -g -c
@@ -9,26 +16,34 @@ PREREQS := $(SRCS:.cpp=.d)
 
 .PHONY: all clean
 
-# We don't use any old-fashioned suffix rules, and clear the list of known suffixes.
-.SUFFICES:
+all: libnut.a
 
-all: $(OBJS)
-
-ifneq ($(filter-out clean,$(or $(MAKECMDGOALS),all)),) # any real goals?
-   # don't emit a warning if files are missing; their existence is ensured upon building
-   -include $(PREREQS) # their respective object file (thus the leading hyphen-minus)
+# Was any goal (other than 'clean') specified on the command line?
+ifneq ($(filter-out clean,$(or $(MAKECMDGOALS),all)),) # None counts as 'all'.
+   include $(PREREQS) # If so, we'll need to include prerequisites files.
 endif
+
+# After reading in all makefiles, make will consider each as a goal target and
+# attempt to update it. If a makefile has a rule which says how to update it,
+# it will be updated if necessary. After all makefiles have been checked, if any
+# have actually been changed, make starts with a clean slate and reads all the
+# makefiles over again.
+
+libnut.a: $(OBJS)
+	$(AR) $(ARFLAGS) $@ $^
 
 clean:
 	$(RM) $(OBJS) $(PREREQS)
 
-$(PREREQS):
+.SECONDEXPANSION:
+
+# The subst function replaces each occurence of .d by .cpp and does not
+# substitute .d for .cpp as I tend to misunderstand it recurringly.
+$(PREREQS): $$(subst .d,.cpp,$$@)
 	@set -e; echo "building $@"; \
 	rule=$$($(CXX) -MM $(CPPFLAGS) $(patsubst %.d,%.cpp,$@)); \
 	rule=$@' '$${rule}; \
 	echo "$$rule" > $@
-
-.SECONDEXPANSION:
 
 $(OBJS): $$(subst .o,.d,$$@)
 	$(CXX) $(CXXFLAGS) $(patsubst %.o,%.cpp,$@) -o $@

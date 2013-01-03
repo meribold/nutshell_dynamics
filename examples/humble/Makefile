@@ -5,7 +5,7 @@ IDIRS := ../../
 CPPFLAGS := -std=c++11 $(addprefix -I, $(IDIRS))
 CXXFLAGS := -Wall -Wextra -Wold-style-cast -pedantic -g -c
 LDIRS := ../../nutshell_dynamics/
-LDLIBS := -lGL -lGLU -lglut -lnutshell_dynamics
+LDLIBS := -lGL -lGLU -lglut -lnut
 LDFLAGS := $(addprefix -L, $(LDIRS))
 PROG := humble
 SRCS := humble.cpp

@@ -6,9 +6,12 @@
 # letters. Those serving internal purposes in this makefile use lower case
 # letters. This practice is recommended in chapter 6 of the GNU Make Manual.
 
-SHELL := /bin/sh # See section 7.2.1 of the GNU Coding Standards. This line is
-                 # redundant since it's not required with GNU Make and no other
-                 # versions of Make are supported.
+# "Every Makefile should contain this line..."
+SHELL := /bin/sh # - section 7.2.1 of the GNU Coding Standards
+
+# Clear the suffix list; no suffix rules in this makefile. See section 7.2.1 of
+# the GNU Coding Standards.
+.SUFFICES:
 
 ################################################################################
 
@@ -29,9 +32,6 @@ snaproot := nutshell_dynamics-$(date)
 
 snapdirs  := $(snaproot) $(addprefix $(snaproot)/,$(snapdirs))
 snaplinks := $(addprefix $(snaproot)/,$(snapfiles))
-
-# See section 7.2.1 of the GNU Coding Standards.
-.SUFFICES:
 
 .PHONY: all clean snapshot
 
