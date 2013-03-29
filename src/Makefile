@@ -13,14 +13,14 @@ ARFLAGS  = cs
 ################################################################################
 
 # See section 7.2.3 'Varialbes for Specifying Commands' of the GNU Coding
-# Standards
+# Standards.
 ALL_CPPFLAGS := $(CPPFLAGS)
 ALL_CXXFLAGS := $(CXXFLAGS) -c
 ALL_ARFLAGS  := r$(ARFLAGS)
 
 sources      := advanceState.cpp body.cpp rigidBody.cpp
-objects      := $(sources:.cpp=.o)
 prereq_files := $(sources:.cpp=.d)
+objects      := $(sources:.cpp=.o)
 
 # All whitespace-separated words in the working directory that do match any of
 # the pattern words $(prereq_files). Beware of file names containing the '%'
