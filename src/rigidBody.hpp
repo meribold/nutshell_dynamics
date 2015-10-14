@@ -16,8 +16,8 @@
    along with Nutshell Dynamics. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef RIGIDBODY_H_SEEN
-#define RIGIDBODY_H_SEEN
+#ifndef RIGIDBODY_HPP_SEEN
+#define RIGIDBODY_HPP_SEEN
 
 #include <algorithm>
 #include <array>
@@ -197,6 +197,6 @@ namespace nut
 	}
 }
 
-#endif //RIGIDBODY_H_SEEN
+#endif //RIGIDBODY_HPP_SEEN
 
 // vim: tw=90 ts=2 sts=-1 sw=0 noet

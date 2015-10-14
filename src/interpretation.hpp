@@ -1,5 +1,5 @@
-#ifndef INTERPRETATION_H_SEEN
-#define INTERPRETATION_H_SEEN
+#ifndef INTERPRETATION_HPP_SEEN
+#define INTERPRETATION_HPP_SEEN
 
 namespace nut
 {
@@ -14,6 +14,6 @@ namespace nut
 	const Interpretation NORMAL = Interpretation::NORMAL;
 }
 
-#endif
+#endif //INTERPRETATION_HPP_SEEN
 
 // vim: tw=90 ts=2 sts=-1 sw=0 noet

@@ -16,8 +16,8 @@
    along with Nutshell Dynamics. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef BODY_H_SEEN
-#define BODY_H_SEEN
+#ifndef BODY_HPP_SEEN
+#define BODY_HPP_SEEN
 
 #include <array>
 #include <cstddef> // std::size_t
@@ -88,6 +88,6 @@ namespace nut
 	};
 }
 
-#endif //BODY_H_SEEN
+#endif //BODY_HPP_SEEN
 
 // vim: tw=90 ts=2 sts=-1 sw=0 noet

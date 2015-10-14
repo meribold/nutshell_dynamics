@@ -16,8 +16,8 @@
    along with Nutshell Dynamics. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef MODELVIEWMATRIX_H_SEEN
-#define MODELVIEWMATRIX_H_SEEN
+#ifndef MODELVIEWMATRIX_HPP_SEEN
+#define MODELVIEWMATRIX_HPP_SEEN
 
 #include <cstddef>
 
@@ -106,6 +106,6 @@ namespace nut
 
 #include "modelViewMatrix.cpp"
 
-#endif //MODELVIEWMATRIX_H_SEEN
+#endif //MODELVIEWMATRIX_HPP_SEEN
 
 // vim: tw=90 ts=2 sts=-1 sw=0 noet

@@ -16,8 +16,8 @@
    along with Nutshell Dynamics. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef THREEVECTOR_H_SEEN
-#define THREEVECTOR_H_SEEN
+#ifndef THREEVECTOR_HPP_SEEN
+#define THREEVECTOR_HPP_SEEN
 
 #include <iostream>
 
@@ -203,6 +203,6 @@ namespace nut
 // of the header
 #include "threeVector.cpp"
 
-#endif //THREEVECTOR_H_SEEN
+#endif //THREEVECTOR_HPP_SEEN
 
 // vim: tw=90 ts=2 sts=-1 sw=0 noet
