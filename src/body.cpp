@@ -21,7 +21,7 @@
 #include <cmath>
 #include <cstddef> // std::size_t
 
-#include "body.h"
+#include "body.hpp"
 
 namespace nut
 {

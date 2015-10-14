@@ -27,9 +27,9 @@
 #include <tuple>
 #include <vector>
 
-#include "body.h"
-#include "modelViewMatrix.h"
-#include "threeVector.h"
+#include "body.hpp"
+#include "modelViewMatrix.hpp"
+#include "threeVector.hpp"
 
 namespace nut
 {

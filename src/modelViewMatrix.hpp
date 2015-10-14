@@ -21,7 +21,7 @@
 
 #include <cstddef>
 
-#include "threeVector.h" // needed to befriend one of its functions
+#include "threeVector.hpp" // needed to befriend one of its functions
 
 #undef NULL
 

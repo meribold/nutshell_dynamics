@@ -21,7 +21,7 @@
 
 #include <iostream>
 
-#include "interpretation.h" // a guarded enum
+#include "interpretation.hpp" // a guarded enum
 
 namespace nut
 {

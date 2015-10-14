@@ -2,7 +2,7 @@
 
 #include "GL/glut.h"
 
-#include "nutshell_dynamics/rigidBody.h"
+#include "nutshell_dynamics/rigidBody.hpp"
 
 using std::sqrt;
 

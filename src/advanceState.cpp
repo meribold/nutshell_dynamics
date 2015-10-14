@@ -16,8 +16,8 @@
    along with Nutshell Dynamics. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "rigidBody.h"
-//#include "staticBody.h"
+#include "rigidBody.hpp"
+//#include "staticBody.hpp"
 
 namespace nut
 {

@@ -23,7 +23,7 @@
 #include <cstddef> // std::size_t
 #include <tuple>
 
-#include "threeVector.h"
+#include "threeVector.hpp"
 
 namespace nut
 {

@@ -18,7 +18,7 @@
 
 #include <cstdlib>
 
-#include "rigidBody.h"
+#include "rigidBody.hpp"
 
 namespace nut
 {
