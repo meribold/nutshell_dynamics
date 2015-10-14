@@ -89,4 +89,3 @@ namespace nut
 }
 
 #endif //BODY_H_SEEN
-

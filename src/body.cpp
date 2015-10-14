@@ -252,4 +252,3 @@ namespace nut
 		return nullptr;
 	}
 }
-

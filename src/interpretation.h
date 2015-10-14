@@ -15,4 +15,3 @@ namespace nut
 }
 
 #endif
-

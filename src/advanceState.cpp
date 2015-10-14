@@ -26,4 +26,3 @@ namespace nut
 		RigidBody::advanceState();
 	}
 }
-

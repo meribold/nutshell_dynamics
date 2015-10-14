@@ -100,4 +100,3 @@ namespace nut
 		return *this;
 	}
 }
-

@@ -107,4 +107,3 @@ namespace nut
 #include "modelViewMatrix.cpp"
 
 #endif //MODELVIEWMATRIX_H_SEEN
-

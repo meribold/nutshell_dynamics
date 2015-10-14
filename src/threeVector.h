@@ -205,4 +205,3 @@ namespace nut
 #include "threeVector.cpp"
 
 #endif //THREEVECTOR_H_SEEN
-

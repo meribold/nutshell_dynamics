@@ -128,4 +128,3 @@ namespace nut
 			otherBody.rotationAxis = angularVelocity[1] / otherBody.angularFrequency;
 	}
 }
-

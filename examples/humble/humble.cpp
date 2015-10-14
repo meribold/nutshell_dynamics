@@ -126,4 +126,3 @@ void timerFunc(int)
 	glutPostRedisplay();
 	glutTimerFunc(16, &timerFunc, 0);
 }
-

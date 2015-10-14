@@ -198,4 +198,3 @@ namespace nut
 }
 
 #endif //RIGIDBODY_H_SEEN
-
