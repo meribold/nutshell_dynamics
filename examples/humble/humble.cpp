@@ -92,16 +92,24 @@ class Tetrahedron : public nut::RigidBody // regular, solid and of uniform densi
 
 void displayFunc()
 {
-	static Tetrahedron foo{9.f, 6.f, {.01f, .5f, .0f}, {.0f, .0f, .0f}, .0f, {.0f, .0f, .0f}};
+	static Tetrahedron tets[] = {
+		{1.f, 6.f, {.01f,  .5f,  .0f}, {.0f, .0f, .0f}, .0f, {.0f, .0f, .0f}},
+		{1.f, 6.f, { .0f, -2.f,  .0f}, {.0f, .0f, .0f}, .0f, {.0f, .0f, .0f}},
+		{1.f, 6.f, { 1.f, .01f, .01f}, {.0f, .0f, .0f}, .0f, {.0f, .0f, .0f}},
+		{1.f, 6.f, {-1.f,  .1f,  .0f}, {.0f, .0f, .0f}, .0f, {.0f, .0f, .0f}},
+		{9.f, 6.f, {-5.f,  .0f,  .0f}, {.0f, .0f, .0f}, .0f, {.0f, .0f, .0f}},
+		{1.f, 6.f, { 1.f,  2.f,  .0f}, {.0f, .0f, .0f}, .0f, {.0f, .0f, .0f}},
+		{1.f, 6.f, { 2.f, -2.f,  .0f}, {.0f, .0f, .0f}, .0f, {.0f, .0f, .0f}},
+		{1.f, 6.f, {-.5f,  2.f,  .0f}, {.0f, .0f, .0f}, .0f, {.0f, .0f, .0f}},
+	};
 
-	static Tetrahedron bar{1.f, 6.f, {.0f, -2.f, .0f}, {.0f, .0f, .0f}, .0f, {.0f, .0f, .0f}};
+	int numTets = sizeof(tets) / sizeof(*tets);
 
-	nut::ThreeVector<float> displacement =
-		 nut::ThreeVector<float>{&bar.getObjectMatrix()[12]} -
-		 nut::ThreeVector<float>{&foo.getObjectMatrix()[12]};
-
-	foo.getVelocity() += .001f / 9.f * displacement.getUnitVector();
-	bar.getVelocity() += -.001f * displacement.getUnitVector();
+	for (int i = 0; i < numTets; ++i) {
+		nut::ThreeVector<float> displacement =
+			nut::ThreeVector<float>{&(tets[i].getObjectMatrix()[12])};
+		tets[i].getVelocity() += -.001f * displacement.getUnitVector();
+	}
 
 	nut::advanceState(); // all the work is done here
 
@@ -109,7 +117,9 @@ void displayFunc()
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	glTranslatef(.0f, .0f, -7.f); // camera transformation
-	foo.display(); bar.display();
+	for (int i = 0; i < numTets; ++i) {
+		tets[i].display();
+	}
 	glutSwapBuffers();
 }
 
