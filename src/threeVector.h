@@ -62,7 +62,7 @@ namespace nut
 	ThreeVector< T, interpretation> operator/( const ThreeVector< T, interpretation>&, T);
 
 	template< typename T, Interpretation interpretation>
-	float operator*( const ThreeVector< T, interpretation>&,
+	T operator*( const ThreeVector< T, interpretation>&,
 		const ThreeVector< T, interpretation>&);
 
 	template< typename T, Interpretation interpretation>
@@ -130,8 +130,7 @@ namespace nut
 		ThreeVector& operator/=( T);
 
 		// dot product
-		friend float nut::operator*< T, interpretation>(
-			const ThreeVector&, const ThreeVector&);
+		friend T nut::operator*< T, interpretation>( const ThreeVector&, const ThreeVector&);
 		ThreeVector& operator*=( const ThreeVector&);
 
 		// cross product

@@ -131,7 +131,7 @@ namespace nut
 	}
 
 	template< typename T, Interpretation interpretation>
-	inline float operator*( const ThreeVector<T, interpretation>& lHS,
+	inline T operator*( const ThreeVector<T, interpretation>& lHS,
 		const ThreeVector<T, interpretation>& rHS)
 	{
 		return lHS[0] * rHS[0] + lHS[1] * rHS[1] + lHS[2] * rHS[2];
@@ -191,7 +191,7 @@ namespace nut
 	template< typename T>
 	ThreeVector< T>& ThreeVector< T, NORMAL>::multiplyByInverse( const ModelViewMatrix< T>& rHS)
 	{
-		float swap[] = {(*this)[0], (*this)[1]};
+		T swap[] = {(*this)[0], (*this)[1]};
 
 		(*this)[0] = rHS[0] * (*this)[0] + rHS[1] * (*this)[1] + rHS[2] * (*this)[2];
 		(*this)[1] = rHS[4] * swap[0] + rHS[5] * (*this)[1] + rHS[6] * (*this)[2];
