@@ -15,3 +15,5 @@
    You should have received a copy of the GNU General Public License
    along with Nutshell Dynamics. If not, see <http://www.gnu.org/licenses/>.
 */
+
+// vim: tw=90 ts=2 sts=-1 sw=0 noet

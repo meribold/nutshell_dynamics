@@ -205,3 +205,5 @@ namespace nut
 #include "threeVector.cpp"
 
 #endif //THREEVECTOR_H_SEEN
+
+// vim: tw=90 ts=2 sts=-1 sw=0 noet

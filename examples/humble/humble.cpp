@@ -126,3 +126,5 @@ void timerFunc(int)
 	glutPostRedisplay();
 	glutTimerFunc(16, &timerFunc, 0);
 }
+
+// vim: tw=90 ts=2 sts=-1 sw=0 noet

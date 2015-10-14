@@ -89,3 +89,5 @@ namespace nut
 }
 
 #endif //BODY_H_SEEN
+
+// vim: tw=90 ts=2 sts=-1 sw=0 noet

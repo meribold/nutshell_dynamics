@@ -128,3 +128,5 @@ namespace nut
 			otherBody.rotationAxis = angularVelocity[1] / otherBody.angularFrequency;
 	}
 }
+
+// vim: tw=90 ts=2 sts=-1 sw=0 noet
