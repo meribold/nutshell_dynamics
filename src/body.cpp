@@ -129,7 +129,7 @@ namespace nut
 			keyDimension = std::fabs(lineOfIntersection[0]) < std::fabs(lineOfIntersection[2]) ?
 				2 : 0;
 
-		struct {	ThreeVector<float> endPoint[2]; } lineSegment[2];
+		struct { ThreeVector<float> endPoint[2]; } lineSegment[2];
 
 		lineSegment[0].endPoint[0] =
 			(*faces[0][separateVertex[0]] *

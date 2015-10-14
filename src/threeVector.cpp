@@ -73,7 +73,7 @@ namespace nut
 
 	template< typename T, Interpretation interpretation>
 	inline ThreeVector< T, interpretation> operator+(
-		const ThreeVector< T, interpretation>& rHS,	const ThreeVector< T, interpretation>& lHS)
+		const ThreeVector< T, interpretation>& rHS, const ThreeVector< T, interpretation>& lHS)
 	{
 		return {rHS[0] + lHS[0], rHS[1] + lHS[1], rHS[2] + lHS[2]};
 	}
@@ -91,7 +91,7 @@ namespace nut
 
 	template< typename T, Interpretation interpretation>
 	inline ThreeVector< T, interpretation> operator-(
-		const ThreeVector< T, interpretation>& rHS,	const ThreeVector< T, interpretation>& lHS)
+		const ThreeVector< T, interpretation>& rHS, const ThreeVector< T, interpretation>& lHS)
 	{
 		return {rHS[0] - lHS[0], rHS[1] - lHS[1], rHS[2] - lHS[2]};
 	}

@@ -42,10 +42,10 @@ namespace nut
 	ModelViewMatrix<T> operator-(const ModelViewMatrix<T>&, const ModelViewMatrix<T>&);
 
 	template <typename T>
-	ThreeVector<T>	operator*(const ModelViewMatrix<T>&, const ThreeVector<T, NORMAL>&);
+	ThreeVector<T> operator*(const ModelViewMatrix<T>&, const ThreeVector<T, NORMAL>&);
 
 	template <typename T>
-	ThreeVector<T>	operator*(const ModelViewMatrix<T>&, const ThreeVector<T, VERTEX>&);
+	ThreeVector<T> operator*(const ModelViewMatrix<T>&, const ThreeVector<T, VERTEX>&);
 
 	template <typename T>
 	class ModelViewMatrix
