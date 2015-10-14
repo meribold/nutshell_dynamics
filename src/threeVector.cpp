@@ -195,7 +195,7 @@ namespace nut
 
 		(*this)[0] = rHS[0] * (*this)[0] + rHS[1] * (*this)[1] + rHS[2] * (*this)[2];
 		(*this)[1] = rHS[4] * swap[0] + rHS[5] * (*this)[1] + rHS[6] * (*this)[2];
-		(*this)[2] = rHS[8] * swap[0] + rHS[9] * swap[2] + rHS[10] * (*this)[2];
+		(*this)[2] = rHS[8] * swap[0] + rHS[9] * swap[1] + rHS[10] * (*this)[2];
 
 		return *this;
 	}
