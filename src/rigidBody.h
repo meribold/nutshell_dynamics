@@ -42,7 +42,7 @@ namespace nut
 	{
 		public:
 
-		typedef std::tuple<ThreeVector<float>*, ThreeVector<float>*, unsigned>	Pool;
+		typedef std::tuple<ThreeVector<float>*, ThreeVector<float>*, unsigned> Pool;
 
 		RigidBody() = delete;
 		RigidBody(const RigidBody&) = delete;
@@ -56,7 +56,7 @@ namespace nut
 
 		RigidBody& operator=(const RigidBody&) = delete;
 
-		friend void advanceState(); // for constant framerates
+		friend void advanceState(); // For constant framerates.
 
 		friend void shiftState(float timeInterval);
 
@@ -68,7 +68,9 @@ namespace nut
 
 		ThreeVector<float>* getVertex() const { return std::get<0>(this->pool); }
 
-		ThreeVector<float>* getSurfaceNormal() const { return std::get<1>(this->pool); }
+		ThreeVector<float>* getSurfaceNormal() const {
+			return std::get<1>(this->pool);
+		}
 
 		unsigned getVertexCount() const { return std::get<2>(this->pool); }
 
@@ -150,7 +152,9 @@ namespace nut
 			std::get<2>(collisionContext)->move(-1.f / std::pow(2, i));
 		}
 		else
+		{
 			std::get<0>(collisionContext) -= 1.f / std::pow(2, i);
+	  }
 	}
 
 	inline void RigidBody::advanceState()
@@ -168,9 +172,8 @@ namespace nut
 			{
 				if (auto partialCollisionContext = (*i)->doesCollide(**j))
 				{
-					collisionContexts.push_back(std::make_tuple(
-						1.f, *i, *j,
-						partialCollisionContext));
+					collisionContexts.push_back(
+						std::make_tuple(1.f, *i, *j, partialCollisionContext));
 
 					refine(collisionContexts.back());
 				}

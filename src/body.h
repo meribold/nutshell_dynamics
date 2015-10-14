@@ -41,13 +41,7 @@ namespace nut
 
 		protected:
 
-		// concrete type for representing a collison and its context
-		struct Collision {
-			Body(& bodies)[2];
-			ThreeVector<float> point, surfaceNormal;
-		};
-
-		Body() = delete; // redundant while user-defined ctor exists, but I like to be explicit
+		Body() = delete; // Redundant while a user-defined ctor exists, but let's be explicit.
 		Body(const Body&) = delete;
 		Body(Body&&) = default;
 		Body(ThreeVector<float> vertices[], ThreeVector<float> surfaceNormals[], const Pool&);
@@ -62,19 +56,19 @@ namespace nut
 		// by the derived class
 		static void advanceState(float timeInterval = 1.f);
 
-		// detects collisions and constructs a sequence of the respective data used
-		// to resolve each collision
+		// Detect collisions and constructs a sequence of the respective data used to resolve
+		// each collision.
 		static void registerCollisions();
 
-		// tests two objects for a collision and, if one is detected, stores it and returns true;
-		// else false is returned
+		// Test two objects for a collision and, if one is detected, store it and
+		// return true.  Else return false.
 		static bool registerCollision(const Body&, const Body&);
 
 		const unsigned(* getFaces() const)[3] { return std::get<0>(this->pool); }
 
 		unsigned getTriangleCount() const { return std::get<1>(this->pool); }
 
-		// returns nullptr if the bodies don't overlap
+		// Returns nullptr if the bodies don't overlap.
 		std::array<ThreeVector<float>, 2>* doesCollide(const Body&) const;
 
 		// data unique to single Body objects; given in global cooridnates;
@@ -82,8 +76,7 @@ namespace nut
 		ThreeVector<float>* const vertices;
 		ThreeVector<float>* const surfaceNormals;
 
-		// data shared by a group of Body objects
-		const Pool& pool;
+		const Pool& pool; // Shared by a group of Body objects.
 
 		private:
 

@@ -39,13 +39,14 @@ namespace nut
 	Body::doesCollide(const Body& otherBody, unsigned faceIdentifier,
 		unsigned otherIdentifier) const
 	{
-		const ThreeVector<float>* const faces[2][3] = {
-			{&this->vertices[this->getFaces()[faceIdentifier][0]],
-			 &this->vertices[this->getFaces()[faceIdentifier][1]],
-			 &this->vertices[this->getFaces()[faceIdentifier][2]]},
-			{&otherBody.vertices[otherBody.getFaces()[otherIdentifier][0]],
-			 &otherBody.vertices[otherBody.getFaces()[otherIdentifier][1]],
-			 &otherBody.vertices[otherBody.getFaces()[otherIdentifier][2]]}
+		const ThreeVector<float>* const faces[2][3] = {{
+				&this->vertices[this->getFaces()[faceIdentifier][0]],
+				&this->vertices[this->getFaces()[faceIdentifier][1]],
+				&this->vertices[this->getFaces()[faceIdentifier][2]]},
+			{
+				&otherBody.vertices[otherBody.getFaces()[otherIdentifier][0]],
+				&otherBody.vertices[otherBody.getFaces()[otherIdentifier][1]],
+				&otherBody.vertices[otherBody.getFaces()[otherIdentifier][2]]}
 		};
 
 		const ThreeVector<float>* const surfaceNormals[2] = {
@@ -54,8 +55,8 @@ namespace nut
 
 		float distance[2][3];
 
-		// the minimal distance from all of the first faces vertices to the second face
-		// using the Hesse normal form
+		// Compute the minimal distance from all of the first face's vertices to the second
+		// face using the Hesse normal form.
 		distance[0][0] = (*faces[1][0] - *faces[0][0]) * *surfaceNormals[1];
 		distance[0][1] = (*faces[1][0] - *faces[0][1]) * *surfaceNormals[1];
 		distance[0][2] = (*faces[1][0] - *faces[0][2]) * *surfaceNormals[1];
@@ -65,10 +66,10 @@ namespace nut
 		if (distance[0][0] < .0f)
 			if (distance[0][1] < .0f)
 				if (distance[0][2] < .0f)
-					return nullptr; // no collision
+					return nullptr; // No collision.
 				else
-					// vertex 2 is separated from 0 and 1 by the other triangle i.e.
-					// on the other side of that triangle
+					// Vertex 2 is separated from 0 and 1 by the other triangle i.e.  on the other
+					// side of that triangle.
 					separateVertex[0] = 2;
 			else
 				if (distance[0][2] < .0f)
@@ -85,9 +86,10 @@ namespace nut
 				if (distance[0][2] < .0f)
 					separateVertex[0] = 2;
 				else
-					return nullptr; // no collision
+					return nullptr; // No collision.
 
-		// the minimal distance from all of the second faces vertices to the first face
+		// Compute the minimal distance from all of the second faces vertices to the first
+		// face.
 		distance[1][0] = (*faces[0][0] - *faces[1][0]) * *surfaceNormals[0];
 		distance[1][1] = (*faces[0][0] - *faces[1][1]) * *surfaceNormals[0];
 		distance[1][2] = (*faces[0][0] - *faces[1][2]) * *surfaceNormals[0];
@@ -95,7 +97,7 @@ namespace nut
 		if (distance[1][0] < .0f)
 			if (distance[1][1] < .0f)
 				if (distance[1][2] < .0f)
-					return nullptr; // no collision
+					return nullptr; // No collision.
 				else
 					separateVertex[1] = 2;
 			else
@@ -113,7 +115,7 @@ namespace nut
 				if (distance[1][2] < .0f)
 					separateVertex[1] = 2;
 				else
-					return nullptr; // no collision
+					return nullptr; // No collision.
 
 		ThreeVector<float> lineOfIntersection =
 			getCrossProduct(*surfaceNormals[0], *surfaceNormals[1]);
@@ -242,8 +244,8 @@ namespace nut
 		{
 			for (unsigned j = 0; j != otherBody.getTriangleCount(); ++j)
 			{
-				// we take the first hit
-				if (auto partialCollisionContext = this->doesCollide( otherBody, i, j))
+				// We take the first hit.
+				if (auto partialCollisionContext = this->doesCollide(otherBody, i, j))
 					return partialCollisionContext;
 			}
 		}
