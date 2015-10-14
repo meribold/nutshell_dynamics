@@ -117,3 +117,5 @@ $(prereq_files):
 # does not substitute 'foo' for 'bar' as I tend to misunderstand it recurringly.
 $(objects): $$(subst .o,.d,$$@)
 	$(CXX) -MMD $(all_cppflags) $(all_cxxflags) $(subst .o,.cpp,$@) -o $@
+
+# vim: tw=90 ts=8 sts=-1 sw=3 noet

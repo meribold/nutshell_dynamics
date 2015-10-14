@@ -21,3 +21,5 @@ $(local_program) : all_ldlibs   = -lGL -lGLU -lglut \
 
 $(local_program): $(local_objects) $(libraries)
 	$(CXX) $(all_ldflags) $(local_objects) $(all_ldlibs) -o $(local_program)
+
+# vim: tw=90 ts=8 sts=-1 sw=3 noet

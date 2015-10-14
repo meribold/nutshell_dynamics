@@ -15,3 +15,5 @@ libraries    += $(local_library)
 
 $(local_library): $(local_objects)
 	$(AR) $(all_arflags) $@ $^
+
+# vim: tw=90 ts=8 sts=-1 sw=3 noet
