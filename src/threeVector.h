@@ -134,7 +134,7 @@ namespace nut
 		ThreeVector& operator*=( const ThreeVector&);
 
 		// cross product
-		friend ThreeVector getCrossProduct< T, interpretation>(	const ThreeVector&,
+		friend ThreeVector getCrossProduct< T, interpretation>( const ThreeVector&,
 			const ThreeVector&);
 		ThreeVector& cross( const ThreeVector&); // result will be stored in *this
 
