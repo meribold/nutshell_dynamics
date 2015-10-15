@@ -2,18 +2,16 @@
 
    This file is part of Nutshell Dynamics.
 
-   Nutshell Dynamics is free software: you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation, either version 3 of the License, or
-   (at your option) any later version.
+   Nutshell Dynamics is free software: you can redistribute it and/or modify it under the
+   terms of the GNU General Public License as published by the Free Software Foundation,
+   either version 3 of the License, or (at your option) any later version.
 
-   Nutshell Dynamics is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-   GNU General Public License for more details.
+   Nutshell Dynamics is distributed in the hope that it will be useful, but WITHOUT ANY
+   WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+   PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
-   You should have received a copy of the GNU General Public License
-   along with Nutshell Dynamics. If not, see <http://www.gnu.org/licenses/>.
+   You should have received a copy of the GNU General Public License along with Nutshell
+   Dynamics.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include <cstdlib>
@@ -49,10 +47,10 @@ namespace nut
 		this->modelViewMatrix[13] += this->velocity[1] * timeInterval;
 		this->modelViewMatrix[14] += this->velocity[2] * timeInterval;
 
-		this->modelViewMatrix.rotate( this->angularFrequency * timeInterval,
+		this->modelViewMatrix.rotate(this->angularFrequency * timeInterval,
 			this->rotationAxis);
 
-		// transforming members of body to new global coordinates
+		// Transform members of body to new global coordinates.
 		for (unsigned i = 0; i != this->getVertexCount(); ++i)
 		{
 			this->vertices[i] = this->modelViewMatrix *
@@ -68,24 +66,24 @@ namespace nut
 		}
 	}
 
-	void RigidBody::effectElasticCollision( RigidBody& otherBody,
-		ThreeVector< float>& pointOfCollision, ThreeVector< float>& normal)
+	void RigidBody::effectElasticCollision(RigidBody& otherBody,
+		ThreeVector<float>& pointOfCollision, ThreeVector<float>& normal)
 	{
-		// includes transformation to world coordinates
-		ThreeVector< float> angularVelocity[2] = {
-			this->modelViewMatrix * static_cast<ThreeVector< float, NORMAL>&&>(
+		// Includes transformation to world coordinates.
+		ThreeVector<float> angularVelocity[2] = {
+			this->modelViewMatrix * static_cast<ThreeVector<float, NORMAL>&&>(
 					this->angularFrequency * this->rotationAxis),
-			otherBody.modelViewMatrix * static_cast<ThreeVector< float, NORMAL>&&>(
+			otherBody.modelViewMatrix * static_cast<ThreeVector<float, NORMAL>&&>(
 					otherBody.angularFrequency * otherBody.rotationAxis)};
 
-		ThreeVector< float> velocityAddend[2] = {
+		ThreeVector<float> velocityAddend[2] = {
 			normal / this->mass, - normal / otherBody.mass};
 
-		ThreeVector< float> angularVelocityAddend[2] = {
-			getCrossProduct( pointOfCollision -
-				ThreeVector< float>( this->modelViewMatrix + 12), normal),
-			- getCrossProduct( pointOfCollision -
-				ThreeVector< float>( otherBody.modelViewMatrix + 12), normal)};
+		ThreeVector<float> angularVelocityAddend[2] = {
+			getCrossProduct(pointOfCollision -
+				ThreeVector<float>(this->modelViewMatrix + 12), normal),
+			- getCrossProduct(pointOfCollision -
+				ThreeVector<float>(otherBody.modelViewMatrix + 12), normal)};
 
 		angularVelocityAddend[0][0] /= this->momentOfInertia[0];
 		angularVelocityAddend[0][1] /= this->momentOfInertia[1];
@@ -96,23 +94,23 @@ namespace nut
 		angularVelocityAddend[1][2] /= otherBody.momentOfInertia[2];
 
 		float commonFactor = -2.f * (this->velocity * normal - otherBody.velocity * normal +
-				angularVelocity[0] * getCrossProduct( pointOfCollision -
-					ThreeVector<float>( this->modelViewMatrix + 12), normal) -
-				angularVelocity[1] * getCrossProduct( pointOfCollision -
-					ThreeVector<float>( otherBody.modelViewMatrix + 12), normal)) /
+				angularVelocity[0] * getCrossProduct(pointOfCollision -
+					ThreeVector<float>(this->modelViewMatrix + 12), normal) -
+				angularVelocity[1] * getCrossProduct(pointOfCollision -
+					ThreeVector<float>(otherBody.modelViewMatrix + 12), normal)) /
 			(normal * velocityAddend[0] - normal * velocityAddend[1] +
-				getCrossProduct( pointOfCollision -
-					ThreeVector<float>( this->modelViewMatrix + 12), normal) *
+				getCrossProduct(pointOfCollision -
+					ThreeVector<float>(this->modelViewMatrix + 12), normal) *
 				angularVelocityAddend[0] -
-				getCrossProduct( pointOfCollision -
-					ThreeVector<float>( otherBody.modelViewMatrix + 12), normal) *
+				getCrossProduct(pointOfCollision -
+					ThreeVector<float>(otherBody.modelViewMatrix + 12), normal) *
 				angularVelocityAddend[1]);
 
 		angularVelocity[0] += commonFactor * angularVelocityAddend[0];
 		angularVelocity[1] += commonFactor * angularVelocityAddend[1];
 
-		// transformation back to object coordinates
-		static_cast< ThreeVector< float, NORMAL>&>( angularVelocity[0]).multiplyByInverse(
+		// Tranform back to object coordinates.
+		static_cast<ThreeVector<float, NORMAL>&>(angularVelocity[0]).multiplyByInverse(
 			this->modelViewMatrix);
 
 		this->velocity += commonFactor * velocityAddend[0];

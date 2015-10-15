@@ -41,9 +41,9 @@ namespace
 
 	nut::ThreeVector<float> surfaceNormals[]{
 		nut::ThreeVector<float>{.0f, -1.f, .0f},
-		nut::ThreeVector<float>{sqrt( 2.f / 3.f), 1.f / 3.f, sqrt( 2.f) / 3.f},
-		nut::ThreeVector<float>{- sqrt( 2.f / 3.f), 1.f / 3.f, sqrt( 2.f) / 3.f},
-		nut::ThreeVector<float>{.0f, 1.f / 3.f, -2.f * sqrt( 2.f) / 3.f}};
+		nut::ThreeVector<float>{sqrt(2.f / 3.f), 1.f / 3.f, sqrt(2.f) / 3.f},
+		nut::ThreeVector<float>{- sqrt(2.f / 3.f), 1.f / 3.f, sqrt(2.f) / 3.f},
+		nut::ThreeVector<float>{.0f, 1.f / 3.f, -2.f * sqrt(2.f) / 3.f}};
 
 	const nut::Body::Pool bodyPool{face, 4}; // '4' means 4 triangles and surface normals
 	const nut::RigidBody::Pool rigidBodyPool{vertices, surfaceNormals, 4}; // here vertices

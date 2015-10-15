@@ -2,18 +2,16 @@
 
    This file is part of Nutshell Dynamics.
 
-   Nutshell Dynamics is free software: you can redistribute it and/or modify
-   it under the terms of the GNU General Public License as published by
-   the Free Software Foundation, either version 3 of the License, or
-   (at your option) any later version.
+   Nutshell Dynamics is free software: you can redistribute it and/or modify it under the
+   terms of the GNU General Public License as published by the Free Software Foundation,
+   either version 3 of the License, or (at your option) any later version.
 
-   Nutshell Dynamics is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-   GNU General Public License for more details.
+   Nutshell Dynamics is distributed in the hope that it will be useful, but WITHOUT ANY
+   WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+   PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
-   You should have received a copy of the GNU General Public License
-   along with Nutshell Dynamics. If not, see <http://www.gnu.org/licenses/>.
+   You should have received a copy of the GNU General Public License along with Nutshell
+   Dynamics.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #ifndef RIGIDBODY_HPP_SEEN
@@ -66,13 +64,17 @@ namespace nut
 
 		protected:
 
-		ThreeVector<float>* getVertex() const { return std::get<0>(this->pool); }
+		ThreeVector<float>* getVertex() const {
+			return std::get<0>(this->pool);
+		}
 
 		ThreeVector<float>* getSurfaceNormal() const {
 			return std::get<1>(this->pool);
 		}
 
-		unsigned getVertexCount() const { return std::get<2>(this->pool); }
+		unsigned getVertexCount() const {
+			return std::get<2>(this->pool);
+		}
 
 		// data shared by a group of objects of nut::RigidBody
 		const Pool& pool;
@@ -107,8 +109,7 @@ namespace nut
 
 	void refine(CollisionContext& collisionContext, unsigned char iterations);
 
-	inline ModelViewMatrix<float>& RigidBody::getObjectMatrix()
-	{
+	inline ModelViewMatrix<float>& RigidBody::getObjectMatrix() {
 		return this->modelViewMatrix;
 	}
 
@@ -188,11 +189,13 @@ namespace nut
 
 		for (const auto& i : collisionContexts)
 		{
-			std::get<1>(i)->effectElasticCollision(*std::get<2>(i),
-				(*std::get<3>(i))[0], (*std::get<3>(i))[1]);
+			std::get<1>(i)->effectElasticCollision(*std::get<2>(i), (*std::get<3>(i))[0],
+					(*std::get<3>(i))[1]);
 
 			std::get<1>(i)->move(std::get<0>(i));
 			std::get<2>(i)->move(std::get<0>(i));
+
+			// TODO: check for follow-up collisions.
 		}
 	}
 }
