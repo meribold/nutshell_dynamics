@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
 	glEnable(GL_CULL_FACE);
 	glShadeModel(GL_FLAT);
 
-	glutTimerFunc(16, &timerFunc, 0);
+	glutTimerFunc(1000, &timerFunc, 0);
 	glutMainLoop();
 }
 
