@@ -4,4 +4,4 @@
 *   Encapsulate some more concepts like: `Collision`, `Collider`, `Detector`, `Scene`,
     ...?
 
-<!--- vim: set tw=90 sts=4 sw=4 et spell: -->
+<!-- vim: set tw=90 sts=-1 sw=4 et spell: -->
