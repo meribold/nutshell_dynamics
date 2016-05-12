@@ -198,8 +198,8 @@ namespace nut
 }
 
 // The implementation has to be visible at the point of instantiation, so it's part of the
-// header.  TODO: should it be threeVector.ipp?
-#include "threeVector.cpp"
+// header.
+#include "threeVector.ipp"
 
 #endif //THREEVECTOR_HPP_SEEN
 

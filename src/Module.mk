@@ -1,19 +1,10 @@
-local_directory := src
+local_library := $(subdirectory)/libnut.a
+local_sources := $(shell find $(subdirectory) -maxdepth 1 -name '*.cpp')
 
-local_sources  := advanceState.cpp body.cpp rigidBody.cpp
-local_library  := libnut.a
+sources   += $(local_sources)
+libraries += $(local_library)
 
-local_sources := $(addprefix $(local_directory)/,$(local_sources))
-local_prereqs := $(local_sources:.cpp=.d)
-local_objects := $(local_sources:.cpp=.o)
-local_library := $(local_directory)/$(local_library)
-
-sources      += $(local_sources)
-prereq_files += $(local_prereqs)
-objects      += $(local_objects)
-libraries    += $(local_library)
-
-$(local_library): $(local_objects)
+$(local_library): $(local_sources:.cpp=.o)
 	$(AR) $(all_arflags) $@ $^
 
 # vim: tw=90 ts=8 sts=-1 sw=3 noet

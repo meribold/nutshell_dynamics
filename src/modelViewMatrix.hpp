@@ -106,7 +106,7 @@ namespace nut
 	};
 }
 
-#include "modelViewMatrix.cpp"
+#include "modelViewMatrix.ipp"
 
 #endif //MODELVIEWMATRIX_HPP_SEEN
 
