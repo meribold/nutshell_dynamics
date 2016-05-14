@@ -47,9 +47,7 @@ programs  :=
 # Set the default target.
 all:
 
-# FIXME: the `sort` breaks the build system; dependency resolution is obviously not
-# working.
-include $(shell find -name 'Module.mk' | sort)
+include $(shell find -name 'Module.mk')
 
 prereq_files := $(sources:.cpp=.d)
 objects      := $(sources:.cpp=.o)
