@@ -5,7 +5,6 @@ sources  += $(local_sources)
 programs += $(local_program)
 
 $(local_program) : ld_dirs     = src
-
 $(local_program) : all_ldflags = $(addprefix -L,$(ld_dirs)) $(LDFLAGS)
 $(local_program) : all_ldlibs  = -lGL -lGLU -lglut \
                    $(patsubst lib%.a,-l%,$(notdir $(libraries))) $(LDLIBS)
