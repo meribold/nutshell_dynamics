@@ -16,7 +16,7 @@ MAKEFLAGS += --no-builtin-rules
 
 # Clear the suffix list; no suffix rules in this makefile.  See section 7.2.1 of the GNU
 # Coding Standards.
-.SUFFICES:
+.SUFFIXES:
 
 CXX      ?= g++
 CPPFLAGS += -Wall -Wextra -pedantic -g -O
